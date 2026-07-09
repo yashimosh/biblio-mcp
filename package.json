@@ -1,0 +1,46 @@
+{
+  "name": "biblio-mcp",
+  "version": "1.0.0",
+  "description": "One MCP server for Anna's Archive, Library Genesis, Sci-Hub, and Z-Library. Search books and papers, resolve download links, and fetch files — across all shadow libraries through a single unified interface.",
+  "type": "module",
+  "bin": {
+    "biblio-mcp": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/index.ts",
+    "start": "node dist/index.js",
+    "smoke": "tsx scripts/smoke.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "annas-archive",
+    "libgen",
+    "library-genesis",
+    "sci-hub",
+    "zlibrary",
+    "books",
+    "papers",
+    "shadow-library",
+    "claude"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.12.1",
+    "cheerio": "1.0.0",
+    "zod": "3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.9",
+    "tsx": "4.16.2",
+    "typescript": "5.5.3"
+  }
+}
