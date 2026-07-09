@@ -1,5 +1,9 @@
 # biblio-mcp
 
+[![CI](https://github.com/yashimosh/biblio-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/yashimosh/biblio-mcp/actions/workflows/ci.yml)
+[![npm version](https://img.shields.io/npm/v/biblio-mcp.svg)](https://www.npmjs.com/package/biblio-mcp)
+[![license](https://img.shields.io/npm/l/biblio-mcp.svg)](LICENSE)
+
 **One [MCP](https://modelcontextprotocol.io) server for Anna's Archive, Library Genesis, Sci-Hub, and Z-Library.**
 
 Search books and papers across every major shadow library through a single
