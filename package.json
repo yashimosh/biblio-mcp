@@ -7,8 +7,19 @@
     "biblio-mcp": "dist/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
+  "author": "Yashar Mahmoudi <yashar.mahmudi@gmail.com> (https://github.com/yashimosh)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yashimosh/biblio-mcp.git"
+  },
+  "homepage": "https://github.com/yashimosh/biblio-mcp",
+  "bugs": {
+    "url": "https://github.com/yashimosh/biblio-mcp/issues"
+  },
   "engines": {
     "node": ">=18"
   },
