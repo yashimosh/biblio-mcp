@@ -39,9 +39,18 @@
     "sci-hub",
     "zlibrary",
     "books",
+    "ebook",
     "papers",
-    "shadow-library",
-    "claude"
+    "academic-papers",
+    "book-search",
+    "paper-search",
+    "pdf-download",
+    "doi",
+    "open-access",
+    "claude",
+    "cursor",
+    "cline",
+    "ai-tools"
   ],
   "license": "MIT",
   "dependencies": {
