@@ -102,10 +102,10 @@ All optional — sensible defaults ship built-in. Override via environment varia
 
 ## Known limitations
 
-- **Sci-Hub** increasingly gates mirrors behind Cloudflare/captcha. `get_paper`
-  extracts the PDF when the mirror serves a real page and otherwise returns the
-  mirror URLs so you can open the article in a browser. This is inherent to
-  Sci-Hub, not a bug in this server.
+- **Sci-Hub** mirrors sometimes gate behind captcha, but the PDF embed URL is
+  still present in the HTML for most mirrors. `get_paper` extracts it
+  successfully in the vast majority of cases. If all mirrors fail, it returns
+  fallback URLs so you can open the article in a browser.
 - **Z-Library** rotates domains and gates most of its catalog behind login. The
   built-in public search is best-effort; when it's blocked, Anna's Archive
   (which indexes the Z-Library collection) covers the same books. Point

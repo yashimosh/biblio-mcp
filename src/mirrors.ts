@@ -33,6 +33,9 @@ export const LIBGEN_MIRRORS = fromEnv("BIBLIO_LIBGEN_MIRRORS", [
 ]);
 
 export const SCIHUB_MIRRORS = fromEnv("BIBLIO_SCIHUB_MIRRORS", [
+  "https://sci-hub.ren",
+  "https://sci-hub.mksa.top",
+  "https://sci-hub.hkvisa.net",
   "https://sci-hub.se",
   "https://sci-hub.st",
   "https://sci-hub.ru",

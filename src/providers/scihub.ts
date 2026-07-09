@@ -52,6 +52,9 @@ export async function resolve(identifier: string): Promise<Paper> {
     if (m) pdfSrc = m[1];
   }
 
+  // Strip viewer fragment (e.g. #view=FitH) from PDF URL.
+  if (pdfSrc) pdfSrc = pdfSrc.replace(/#.*$/, "");
+
   const title =
     $("#citation i").first().text().trim() ||
     $("title").text().trim() ||
