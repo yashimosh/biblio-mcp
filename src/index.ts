@@ -26,6 +26,29 @@ const json = (data: unknown) => ({
   content: [{ type: "text" as const, text: JSON.stringify(data, null, 2) }],
 });
 
+// Many mirrors (e.g. Libgen get.php) serve everything as
+// application/octet-stream, so content-type alone can't tell an EPUB from a
+// PDF. Sniff the actual file signature instead, falling back to content-type
+// and finally "bin".
+function sniffExt(buffer: Buffer, contentType?: string | null): string {
+  if (buffer.length >= 4) {
+    if (buffer.subarray(0, 4).toString("latin1") === "%PDF") return "pdf";
+    if (buffer.subarray(0, 2).toString("latin1") === "PK") {
+      // ZIP-based: EPUB has "mimetype" as the first archive entry naming
+      // application/epub+zip; CBZ/plain ZIP won't. Cheap heuristic: scan the
+      // first few KB for the EPUB mimetype string.
+      const head = buffer.subarray(0, 4096).toString("latin1");
+      return head.includes("application/epub+zip") ? "epub" : "zip";
+    }
+    if (buffer.subarray(0, 4).toString("latin1") === "Rar!") return "rar";
+    if (buffer.subarray(60, 68).toString("latin1") === "BOOKMOBI") return "mobi";
+    if (buffer.subarray(0, 8).toString("latin1") === "AT&TFORM") return "djvu";
+  }
+  if (contentType?.includes("epub")) return "epub";
+  if (contentType?.includes("pdf")) return "pdf";
+  return "bin";
+}
+
 // ---------------------------------------------------------------------------
 // search_books — the headline tool
 // ---------------------------------------------------------------------------
@@ -132,13 +155,7 @@ server.tool(
           errors.push(`${link.label}: got HTML, not a file`);
           continue;
         }
-        const ext =
-          filename?.split(".").pop() ||
-          (contentType?.includes("epub")
-            ? "epub"
-            : contentType?.includes("pdf")
-              ? "pdf"
-              : "bin");
+        const ext = filename?.split(".").pop() || sniffExt(buffer, contentType);
         const name = filename ?? `${hash}.${ext}`;
         const path = join(dir, name);
         await writeFile(path, buffer);
