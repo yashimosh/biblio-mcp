@@ -36,7 +36,7 @@ Requires **Node.js ≥ 18**.
 npx biblio-mcp
 
 # Or clone and build
-git clone https://github.com/YOUR_USERNAME/biblio-mcp.git
+git clone https://github.com/yashimosh/biblio-mcp.git
 cd biblio-mcp
 npm install
 npm run build
